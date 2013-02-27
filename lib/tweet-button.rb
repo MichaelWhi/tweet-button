@@ -21,11 +21,10 @@ module TweetButton
   def default_tweet_button_options
     {
       :url => request.url, 
-      :via => "tweetbutton", 
       :text => "", 
       :related => "", 
       :count => "vertical", 
-      :lang => "en"
+      :lang => current_I18n_locale
     }.merge(TweetButton.default_tweet_button_options || {})
   end
   
@@ -48,7 +47,7 @@ module TweetButton
     # Make sure the CSS class is there
     params['class'] = 'twitter-share-button'
     # Add the current language to the link
-    params['data'] = {:lang => current_I18n_locale}
+    params['data'] = {:lang => params['lang']}
     params
   end
   
