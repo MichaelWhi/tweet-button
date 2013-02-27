@@ -63,7 +63,7 @@ module TweetButton
   
   def current_I18n_locale
     if defined?(I18n)
-      I18n.locale
+      I18n.locale.to_s
     else
       "en"
     end
