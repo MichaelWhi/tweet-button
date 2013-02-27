@@ -47,6 +47,8 @@ module TweetButton
     
     # Make sure the CSS class is there
     params['class'] = 'twitter-share-button'
+    # Add the current language to the link
+    params['data'] = {:lang => current_I18n_locale}
     params
   end
   
@@ -58,5 +60,13 @@ module TweetButton
   def html_safe_string(str)
     @use_html_safe ||= "".respond_to?(:html_safe)
     @use_html_safe ? str.html_safe : str
+  end
+  
+  def current_I18n_locale
+    if defined?(I18n)
+      I18n.locale
+    else
+      "en"
+    end
   end
 end
